@@ -1,21 +1,18 @@
-import { createElement } from "react";
+import React from "react";
 import { createRoot } from "react-dom/client";
 
-function render(reactElement, containerDOMElement) {
-  const { type, props, children } = reactElement;
-  const root = createRoot(containerDOMElement);
-  const element = createElement(type, { href: props.href }, children);
-  return root.render(element);
-}
+//// Old way:
+// const element = React.createElement(
+//   'p',
+//   {
+//     id: 'hello',
+//   },
+//   'Hello World!'
+// );
 
-const reactElement = {
-  type: "a",
-  props: {
-    href: "https://wikipedia.org/",
-  },
-  children: "Read more on Wikipedia",
-};
+// New way:
+const element = <p id="hello">Hello World!</p>;
 
-const containerDOMElement = document.querySelector("#root");
-
-render(reactElement, containerDOMElement);
+const container = document.querySelector("#root");
+const root = createRoot(container);
+root.render(element);
